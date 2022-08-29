@@ -11,6 +11,7 @@ class Courses(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     course_Image = CloudinaryField("course_image", null=True, blank=True)
+    duration= models.IntegerField(null=True)
     price = models.IntegerField(null=True)
 
     def __str__(self):
@@ -67,10 +68,12 @@ class Testimonials(models.Model):
     testimonials in projects
     """
 
-    user = models.ForeignKey(
-        User, related_name="users_testimonials", on_delete=models.CASCADE)
+    # user = models.ForeignKey(
+    #     User, related_name="users_testimonials", on_delete=models.CASCADE)
+    username=models.CharField(max_length=100,null=True)
+    profile=CloudinaryField("user_profile",null=True,blank=True)
     statement = models.CharField(max_length=500)
-    rating = models.IntegerField(null=False)
+    rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
 
