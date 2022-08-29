@@ -13,23 +13,22 @@ class Courses(models.Model):
     course_Image = CloudinaryField("course_image", null=True, blank=True)
     price = models.IntegerField(null=True)
 
-    @classmethod
     def __str__(self):
         return self.name
 
     @classmethod
-    def save_course(self):
+    def save_course(self,course):
         """
         saves course
         """
-        self.save()
+        self.save(course)
 
     @classmethod
-    def delete_course(self):
+    def delete_course(self,course):
         """
         deletes course
         """
-        self.delete()
+        self.delete(id=course)
 
     @classmethod
     def update_course(self, name):
@@ -87,3 +86,7 @@ class About(models.Model):
     institute_description = models.CharField(max_length=1000)
     founder_image = CloudinaryField("founder_image", null=True, blank=True)
     hero_image = CloudinaryField("hero_image", null=True, blank=True)
+    contact_email=models.EmailField()
+    primary_phoneNumber=models.CharField(max_length=200)
+    secondary_phoneNumber=models.CharField(max_length=200)
+
