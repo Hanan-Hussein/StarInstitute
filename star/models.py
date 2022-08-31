@@ -93,3 +93,15 @@ class About(models.Model):
     primary_phoneNumber=models.CharField(max_length=200)
     secondary_phoneNumber=models.CharField(max_length=200)
 
+class Feedback(models.Model):
+    name=models.CharField(max_length=100)
+    phoneNumber=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
+    language=models.ForeignKey(Courses,on_delete=models.CASCADE)
+    message=models.CharField(max_length=1000)
+
+    def __str__(self) -> str:
+        return self.name
+    @classmethod
+    def save_feedback(cls, feedback):
+        cls.save(feedback)
