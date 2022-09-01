@@ -15,7 +15,7 @@ class Courses(models.Model):
     price = models.IntegerField(null=True)
 
     def __str__(self):
-        return self.name
+        return f"Name: {self.name}: course_Image {self.course_Image}: duration{self.duration}: price{self.duration}"
 
     @classmethod
     def save_course(self,course):
@@ -55,8 +55,8 @@ class Profile(models.Model):
     profile_image = CloudinaryField("profile", blank=True, null=True)
 
     @classmethod
-    def __str__(self) ->str:
-        return self.user
+    def __str__(self):
+        return f"user:{self.user}: course:{self.course}: profile_image:{self.profile_image}"
 
     @classmethod
     def save_profile(cls, profile):
@@ -76,6 +76,8 @@ class Testimonials(models.Model):
     rating = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self) :
+        return f"Username: {self.username}: statement: {self.statement}: rating:{self.rating}: created:{self.created_at}"
 
 class About(models.Model):
     """
@@ -93,6 +95,8 @@ class About(models.Model):
     primary_phoneNumber=models.CharField(max_length=200)
     secondary_phoneNumber=models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"Founder Name: {self.founder_name}: Institute Name: {self.Institute_name}: Tagline: {self.tag_line}: Email: {self.contact_email}"
 class Feedback(models.Model):
     name=models.CharField(max_length=100)
     phoneNumber=models.CharField(max_length=100)
@@ -100,8 +104,8 @@ class Feedback(models.Model):
     language=models.ForeignKey(Courses,on_delete=models.CASCADE)
     message=models.CharField(max_length=1000)
 
-    def __str__(self) -> str:
-        return self.name
+    def __str__(self) :
+        return f"Name: {self.name}: phone: {self.phoneNumber}: email: {self.email}: language: {self.language}"
     @classmethod
     def save_feedback(cls, feedback):
         cls.save(feedback)
