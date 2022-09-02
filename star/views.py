@@ -4,8 +4,8 @@ from rest_framework import generics
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import CoursesSerializer, TestimonialsSerializer, AboutSerializer, FeedbackSerializer
-from .models import Courses, About, Profile, Testimonials, Feedback
+from .serializer import CoursesSerializer, TestimonialsSerializer, AboutSerializer, FeedbackSerializer,AssetsSerializer
+from .models import Courses, About, Profile, Testimonials, Feedback, Assets
 # Create your views here.
 
 
@@ -41,3 +41,11 @@ class feedback(APIView):
             serializer.save()
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class assets(APIView):
+    def get(self,request):
+        assets=Assets.objects.all()
+        serializer=AssetsSerializer(assets,many=True)
+        return Response(serializer.data)
+
+       

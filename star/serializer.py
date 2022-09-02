@@ -1,5 +1,5 @@
 from dataclasses import field, fields
-from.models import Courses,Testimonials,About,Feedback
+from.models import Courses,Testimonials,About,Feedback, Assets
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
@@ -26,4 +26,10 @@ class FeedbackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=Feedback
+        fields='__all__'
+
+
+class AssetsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Assets
         fields='__all__'

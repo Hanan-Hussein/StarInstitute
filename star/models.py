@@ -109,3 +109,16 @@ class Feedback(models.Model):
     @classmethod
     def save_feedback(cls, feedback):
         cls.save(feedback)
+
+class Assets(models.Model):
+    logo=CloudinaryField("logo",null=True,blank=True)
+    hero_desktop=CloudinaryField("hero_desktop",null=True,blank=True)
+    hero_mobile=CloudinaryField("hero_mobile",null=True,blank=True)
+    hero_svg1=CloudinaryField("Hero_svg_1", null=True,blank=True)
+    hero_svg2=CloudinaryField("Hero_svg_2",null=True,blank=True)
+    hero_svg3=CloudinaryField("Hero_svg_3", null=True,blank=True)
+    hero_svg4=CloudinaryField("Hero_svg_4",null=True,blank=True)
+    hero_svg5=CloudinaryField("Hero_svg_5",null=True,blank=True)
+    about_mobile=CloudinaryField("about_mobile",null=True,blank=True)
+    about_desktop=CloudinaryField("about_desktop",null=True,blank=True)
+    contact=CloudinaryField("contact",null=True,blank=True)

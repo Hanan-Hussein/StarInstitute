@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile,Courses,About,Testimonials,Feedback
+from .models import Profile,Courses,About,Testimonials,Feedback, Assets
 # Register your models here.
 
 class courseAdmin(admin.ModelAdmin):
@@ -17,8 +17,12 @@ class testimonialsAdmin(admin.ModelAdmin):
 
 class feedbackAdmin(admin.ModelAdmin):
     list_display=("name","phoneNumber","email","language")
+
+class assetsAdmin(admin.ModelAdmin):
+    list_display=("logo","hero_desktop","about_mobile","contact")
 admin.site.register(Profile,profileAdmin)
 admin.site.register(Courses,courseAdmin)
 admin.site.register(About,aboutAdmin)
 admin.site.register(Testimonials,testimonialsAdmin)
 admin.site.register(Feedback,feedbackAdmin)
+admin.site.register(Assets,assetsAdmin)
